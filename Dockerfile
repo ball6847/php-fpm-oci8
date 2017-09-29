@@ -9,7 +9,7 @@ RUN apt-get update && apt-get -y install wget bsdtar libaio1 libfreetype6-dev li
  ln -s /usr/local/instantclient/libclntsh.so.* /usr/local/instantclient/libclntsh.so && \
  ln -s /usr/local/instantclient/lib* /usr/lib && \
  ln -s /usr/local/instantclient/sqlplus /usr/bin/sqlplus && \
- docker-php-ext-configure gd && \
+ docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
  docker-php-ext-configure oci8 --with-oci8=instantclient,/usr/local/instantclient && \
  docker-php-ext-install gd oci8 && \
  rm -rf /var/lib/apt/lists/* && \
